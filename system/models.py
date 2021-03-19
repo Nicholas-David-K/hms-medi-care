@@ -13,13 +13,15 @@ GENDER_CHOICES = (
     ('Female', 'Female')
 )
 
-
 class User(AbstractUser):
-    email = models.EmailField(unique=True)
     speciality = models.ForeignKey("Department", on_delete=models.SET_NULL, blank=True, null=True)
+    email = models.EmailField(unique=True, blank=True, null=True)
     phone = fields.EncryptedCharField(max_length=20, blank=True, null=True)
 
+    REQUIRED_FIELDS=['email']
 
+    def __str__(self):
+        return f"{self.first_name}"
 
 
 class Status(models.Model):
@@ -43,23 +45,11 @@ class Department(models.Model):
         return self.name
 
 
-class Doctor(models.Model):
-    user = models.ForeignKey('User', on_delete=models.CASCADE)
-    speciality = models.ForeignKey("Department", on_delete=models.SET_NULL, blank=True, null=True)
-    email = models.EmailField(unique=True, blank=True, null=True)
-    phone = fields.EncryptedCharField(max_length=20, blank=True, null=True)
-    photo = models.ImageField(upload_to='photos/%Y/%m/%d/', blank=True, null=True)
-    created_at = models.DateTimeField(auto_now_add=True)
-    updated_at = models.DateTimeField(auto_now=True)
-
-    def __str__(self):
-        return f"{self.speciality} - {self.user.first_name}"
 
 
 
 class Appointment(models.Model):
     name = models.CharField(max_length=50, blank=True, null=True)
-    address = fields.EncryptedCharField(max_length=20)
     email = fields.EncryptedEmailField()
     age = models.IntegerField()
     phone = fields.EncryptedCharField(max_length=20)
@@ -83,12 +73,12 @@ class Nurse(models.Model):
 
 
 
-def post_user_created_signal(sender, instance, created, **kwargs):
-    if created:
-        Doctor.objects.create(
-            user=instance,
-            speciality=instance.speciality,
-            email=instance.email,
-            phone=instance.phone,
-        )
-post_save.connect(post_user_created_signal, sender=User)
+# def post_user_created_signal(sender, instance, created, **kwargs):
+#     if created:
+#         Doctor.objects.create(
+#             user=instance,
+#             speciality=instance.speciality,
+#             email=instance.email,
+#             phone=instance.phone,
+#         )
+# post_save.connect(post_user_created_signal, sender=User)
