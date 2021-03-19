@@ -6,6 +6,12 @@
         <div class="flex flex-col text-center w-full mb-20">
             <h1 class="sm:text-4xl text-3xl font-medium title-font mb-2 text-gray-900"><span class="text-green-500">Dr. {{ request.user }}'s </span>Appointments</h1>
             <p class="lg:w-2/3 mx-auto leading-relaxed text-base">Banh mi cornhole echo park skateboard authentic crucifix neutra tilde lyft biodiesel artisan direct trade mumblecore 3 wolf moon twee</p>
+            <h3 class="py-5 text-2xl font-semibold ">
+              Department: 
+              <span class="px-2 text-2xl py-1 px-4 inline-flex font-semibold rounded-full bg-red-100">
+                {{ request.user.speciality }}
+            </span>
+            </h3>
         </div>
         <div class="w-full mx-auto overflow-auto">
         {% include 'partials/_alerts.html' %}

@@ -42,7 +42,7 @@ class AppointMentList(generic.ListView):
 
 
     def get_queryset(self):
-        return Appointment.objects.filter(department__name=self.request.user.speciality.name).order_by('-created_at')
+        return Appointment.objects.filter(department=self.request.user.speciality).order_by('-created_at')
 
 
 class AppointmentUpdateView(LoginRequiredMixin, generic.UpdateView):
