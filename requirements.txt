@@ -6,12 +6,16 @@ crispy-tailwind==0.3.0
 cryptography==3.4.6
 defusedxml==0.7.1
 Django==3.1.7
-django-adminlte3==0.1.6
+django-admin-interface==0.15.5
 django-allauth==0.44.0
 django-autocomplete-light==3.8.2
 django-bootstrap-datepicker-plus==3.0.5
+django-colorfield==0.4.1
 django-crispy-forms==1.11.1
+django-flat-responsive==2.0
+django-flat-theme==1.1.4
 django-searchable-encrypted-fields==0.1.9
+gunicorn==20.0.4
 idna==2.10
 oauthlib==3.1.0
 Pillow==8.1.2
@@ -27,3 +31,4 @@ six==1.15.0
 sqlparse==0.4.1
 typing-extensions==3.7.4.3
 urllib3==1.26.4
+whitenoise==5.2.0

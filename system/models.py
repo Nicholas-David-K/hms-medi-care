@@ -88,7 +88,7 @@ def post_user_created_signal(sender, instance, created, **kwargs):
     if created:
         Doctor.objects.create(
             user=instance,
-            speciality=instance.speciality,
+            speciality  =instance.speciality,
             email=instance.email,
             phone=instance.phone,
         )

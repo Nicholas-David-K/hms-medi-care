@@ -153,7 +153,6 @@ SITE_ID = 1
 
 STATIC_ROOT = 'staticfiles'
 STATIC_URL = '/static/'
-
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'hms/static')
 ]
