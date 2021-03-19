@@ -46,8 +46,8 @@ class Department(models.Model):
 class Doctor(models.Model):
     user = models.ForeignKey('User', on_delete=models.CASCADE)
     speciality = models.ForeignKey("Department", on_delete=models.SET_NULL, blank=True, null=True)
-    email = models.EmailField(unique=True)
-    phone = fields.EncryptedCharField(max_length=20)
+    email = models.EmailField(unique=True, blank=True, null=True)
+    phone = fields.EncryptedCharField(max_length=20, blank=True, null=True)
     photo = models.ImageField(upload_to='photos/%Y/%m/%d/', blank=True, null=True)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
@@ -67,7 +67,6 @@ class Appointment(models.Model):
     gender = fields.EncryptedCharField(max_length=20, choices=GENDER_CHOICES)
     date = models.DateTimeField()
     status = models.ForeignKey('Status', on_delete=models.SET_NULL, blank=True, null=True)
-    # doctor = models.ForeignKey("Doctor", on_delete=models.CASCADE, blank=True, null=True)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
     nurse = models.ForeignKey('Nurse', on_delete=models.SET_NULL, blank=True, null=True)
