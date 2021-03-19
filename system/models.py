@@ -67,7 +67,7 @@ class Appointment(models.Model):
     gender = fields.EncryptedCharField(max_length=20, choices=GENDER_CHOICES)
     date = models.DateTimeField()
     status = models.ForeignKey('Status', on_delete=models.SET_NULL, blank=True, null=True)
-    doctor = models.ForeignKey("Doctor", on_delete=models.CASCADE, blank=True, null=True)
+    # doctor = models.ForeignKey("Doctor", on_delete=models.CASCADE, blank=True, null=True)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
     nurse = models.ForeignKey('Nurse', on_delete=models.SET_NULL, blank=True, null=True)

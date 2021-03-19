@@ -23,7 +23,7 @@ class AppointmentForm(forms.ModelForm):
 
     class Meta:
         model = Appointment
-        fields = ('name', 'age', 'gender', 'phone', 'email', 'doctor', 'date')
+        fields = ('name', 'age', 'gender', 'phone', 'email', 'date')
         widgets = {
             'name': forms.TextInput(attrs={
                 'class': 'w-full bg-white rounded border border-gray-300 focus:border-green-500 focus:ring-2 focus:ring-green-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out'
@@ -41,9 +41,9 @@ class AppointmentForm(forms.ModelForm):
             'gender': forms.Select(attrs={
                 'class': 'w-full bg-white rounded border border-gray-300 focus:border-green-500 focus:ring-2 focus:ring-green-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out'
             }),
-            'doctor': forms.Select(attrs={
-                'class': 'w-full bg-white rounded border border-gray-300 focus:border-green-500 focus:ring-2 focus:ring-green-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out'
-            }),            
+            # 'doctor': forms.Select(attrs={
+            #     'class': 'w-full bg-white rounded border border-gray-300 focus:border-green-500 focus:ring-2 focus:ring-green-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out'
+            # }),            
             'date': DateTimeInput(attrs={
                 'class': 'w-full bg-white rounded border border-gray-300 focus:border-green-500 focus:ring-2 focus:ring-green-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out'
             })
