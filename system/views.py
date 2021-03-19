@@ -23,6 +23,7 @@ class SignUpView(generic.CreateView):
     template_name = 'registration/signup.html'
 
     def get_success_url(self):
+        messages.success(self.request, "Account Successfully Created")
         return reverse('account_login')
 
 
