@@ -10,6 +10,7 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.1/ref/settings/
 """
 
+import django_heroku
 from django.contrib.messages import constants as messages
 from pathlib import Path
 import os
@@ -188,3 +189,7 @@ EMAIL_HOST_PASSWORD = os.environ.get('TEST_EMAIL_PASSWORD')
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 EMAIL_USE_SSL = False
+
+
+
+django_heroku.settings(locals())
