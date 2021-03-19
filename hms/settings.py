@@ -27,7 +27,7 @@ SECRET_KEY = '%@!$i!wk0t3qi6(x5vx5z*udfq26in5*v7ge!(cr(tro)z#4-+'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['medicarehms.herokuapp.com']
 
 
 # Application definition
