@@ -183,27 +183,8 @@ CRISPY_TEMPLATE_PACK = "tailwind"
 # Django Email Settings
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.gmail.com'
-EMAIL_HOST_USER = 'site.djemail@gmail.com'
-EMAIL_HOST_PASSWORD = '2011388259.abcde'
+EMAIL_HOST_USER = os.environ.get('TEST_EMAIL')
+EMAIL_HOST_PASSWORD = os.environ.get('TEST_EMAIL_PASSWORD')
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 EMAIL_USE_SSL = False
-
-
-# vali admin templates
-VALI_CONFIG = {
-    # the vali-admin themes  default, blue, purple, green,brown
-    'theme': 'blue',
-    'dashboard': {'name': 'dashboard', 'url': '/admin/'},
-    # the order for applist  default, registry
-    # display applist by group: True
-    #  e.g. {group: True}
-    # default check decorators  vali.decorator.vali_models_group on ModelAdmin
-    #  * otherwize use group_marker in verbose_name_plural, (will be deprecated in future version 0.2.0)*
-    #  * e.g.  {group: True, group_marker : '-'}
-    #    verbose_name_plural = system-user
-    #  * display the model "user" in group "system"
-    'applist': {"order": "registry", "group": True},
-    # default: //maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css
-    # 'font_awesome_url': 'font-awesome-4.7.0/css/font-awesome.min.css',
-}
