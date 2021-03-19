@@ -1,0 +1,36 @@
+{% if messages %}
+
+{% for message in messages %}
+<div id="message" class="container py-5">
+    <div class="alert 
+    {% if message.tags == 'success' %}
+    bg-green-200
+    {% endif %}
+    {% if message.tags == 'warning' %}
+    bg-yellow-200
+    {% endif %}
+    {% if message.tags == 'error' %}
+    bg-red-200
+    {% endif %}
+      rounded p-2 alert-{{ message.tags }} alert-dismissible text-center" role="alert">
+        <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span></button>
+        <strong>
+            {% if message.level == DEFAULT_MESSAGE_LEVELS_ERROR %}
+            Error:
+            {% else %}
+            {{ message.tags|title }}
+            {% endif %}
+        </strong>
+        {{ message }}
+    </div>
+</div>
+
+
+<script>
+  setInterval(() => {
+     $('#message').fadeOut('slow');
+  }, 6000);
+</script>
+{% endfor %}
+
+{% endif %}
