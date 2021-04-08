@@ -45,6 +45,13 @@ class Department(models.Model):
         return self.name
 
 
+class Prescription(models.Model):
+    prescription = fields.EncryptedCharField(max_length=200)
+    diagnosis = fields.EncryptedCharField(max_length=400)
+
+    def __str__(self):
+        return f"{self.prescription} {self.diagnosis}"
+
 
 
 
@@ -55,11 +62,13 @@ class Appointment(models.Model):
     phone = fields.EncryptedCharField(max_length=20)
     department = models.ForeignKey("Department", on_delete=models.SET_NULL, blank=True, null=True)
     gender = fields.EncryptedCharField(max_length=20, choices=GENDER_CHOICES)
+    prescription = models.ForeignKey("Prescription", on_delete=models.SET_NULL, blank=True, null=True)
     date = models.DateTimeField()
     status = models.ForeignKey('Status', on_delete=models.SET_NULL, blank=True, null=True)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
     nurse = models.ForeignKey('Nurse', on_delete=models.SET_NULL, blank=True, null=True)
+
     
     def __str__(self):
         return self.name

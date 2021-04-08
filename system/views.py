@@ -8,7 +8,7 @@ from django.contrib import messages
 from django.core.mail import send_mail
 from django.template.loader import render_to_string
 
-from .models import Appointment
+from .models import Appointment, Prescription
 from django.contrib.auth.mixins import LoginRequiredMixin
 
 from django.views import View
@@ -52,7 +52,7 @@ class AppointmentUpdateView(LoginRequiredMixin, generic.UpdateView):
     template_name = 'system/appointment_detail.html'
 
     def get_success_url(self):
-        messages.success(self.request, 'Appointment status successfully updated')
+        messages.success(self.request, 'Appointment successfully updated')
         return reverse('appointment-list')
 
 
@@ -84,6 +84,8 @@ class SendEmailToPatientView(LoginRequiredMixin, View):
         # get the person you are sending the message to
         appointee = get_object_or_404(Appointment, pk=self.kwargs.get('pk'))
 
+        print("THIS PERSONS AGE IS:", appointee.age)
+
         # render email to template
         msg_html = render_to_string('system/email.html', {
             'person': appointee,
@@ -97,6 +99,15 @@ class SendEmailToPatientView(LoginRequiredMixin, View):
             recipient_list=[appointee.email],
             html_message=msg_html       
         )
+        # save prescription and diagnosis
+        prescript = Prescription(
+            prescription = prescription,
+            diagnosis = diagnosis
+        )
+        appointee.prescription = prescript
+        prescript.save()
+        appointee.save()
+
         messages.success(self.request, 'You email has been sent')
         return redirect('appointment-list')
 
