@@ -42,21 +42,16 @@
               <td class="border-t-2 border-gray-200 px-4 py-3 text-lg text-gray-900">{{ app.date }}</td>
               <td class="border-t-2 border-gray-200 px-4 py-3 text-lg text-gray-900">{{ app.nurse }}</td>
               <td class="border-t-2 border-gray-200 px-4 py-3 text-lg text-gray-900">
-                  {% if app.status.name == 'Not Contacted' %}
+                  {% if app.status.name == 'Not Prescribed' %}
                     <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-red-100 text-green-800">
                         {{ app.status }}
                     </span>
                   {% endif %}
-                  {% if app.status.name == 'Contacted' %}
+                  {% if app.status.name == 'Prescribed' %}
                   <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">
                       {{ app.status }}
                   </span>
                 {% endif %}
-                {% if app.status.name == 'Patient' %}
-                <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-yellow-100 text-green-800">
-                    {{ app.status }}
-                </span>
-              {% endif %}
               </td>
               <td>{{ app.prescription.diagnosis }}</td>
               <td>{{ app.prescription.prescription }}</td>
