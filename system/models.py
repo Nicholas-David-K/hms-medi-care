@@ -13,7 +13,7 @@ GENDER_CHOICES = (
     ('Female', 'Female')
 )
 
-class User(AbstractUser):
+class User(AbstractUser): # Doctor
     speciality = models.ForeignKey("Department", on_delete=models.SET_NULL, blank=True, null=True)
     email = models.EmailField(unique=True, blank=True, null=True)
     phone = fields.EncryptedCharField(max_length=20, blank=True, null=True)

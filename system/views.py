@@ -77,15 +77,18 @@ class SendEmailToPatientView(LoginRequiredMixin, View):
 
     def post(self, *args, **kwargs):    
         subject = self.request.POST.get('subject')
-        message = self.request.POST.get('message_email')
+        diagnosis = self.request.POST.get("diagnosis")
+        prescription = self.request.POST.get('prescription')
+
         
         # get the person you are sending the message to
         appointee = get_object_or_404(Appointment, pk=self.kwargs.get('pk'))
 
         # render email to template
         msg_html = render_to_string('system/email.html', {
-            'message': message,
-            'person': appointee
+            'person': appointee,
+            'diagnosis': diagnosis,
+            'prescription': prescription
         })
         send_mail(
             subject=subject, 

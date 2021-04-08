@@ -91,13 +91,14 @@ footer img{
 
     <main class="container">
         <div class="body">
-            <h2>Thanks for reaching out to us {{ person.name }}!</h2>
+            <h2>Here is your prescription and diagnosis {{ person.name }}!</h2>
             
-            <p>{{ message }}</p>
+            <p><strong>Diagnosis: </strong>{{ diagnosis }}</p>
 
-            <p>We will call you through <a>tel: {{ person.phone }}</a> for further information on your appointment</p>
+            <p><strong>Prescription:</strong>{{ prescription }}</p>
+
             
-            <p>Thanks</p>
+            <p>Thank you for choosing MediCare</p>
 
         </div>
 
